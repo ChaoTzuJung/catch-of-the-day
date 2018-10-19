@@ -1,3 +1,4 @@
+// 把價錢US化並除以100
 export function formatPrice(cents) {
   return (cents / 100).toLocaleString("en-US", {
     style: "currency",
@@ -9,6 +10,7 @@ export function rando(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
+// take in some sort of text and slug it out with a actual slug
 export function slugify(text) {
   return text
     .toString()
