@@ -15,7 +15,10 @@ class App extends React.Component {
         fishes[`fish${Date.now()}`] = fish;
         // 3. 把fishes物件加到state
         this.setState({ fishes })
-        
+    }
+
+    loadSampleFish = fish => {
+        alert('Sample Fish')
     }
 
     render(){
@@ -25,7 +28,7 @@ class App extends React.Component {
                     <Header tagline="Fresh Seafood Market" />
                 </div>
                 <Order />
-                <Inventory addFish={this.addFish}/>
+                <Inventory addFish={this.addFish} loadSampleFish={this.loadSampleFish}/>
             </div>
         )
     };

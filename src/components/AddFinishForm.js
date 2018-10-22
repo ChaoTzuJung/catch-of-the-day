@@ -21,9 +21,6 @@ class AddFishform extends React.Component {
         console.log(this.props)
         // 3. 呼叫callback addFish method，把fish物件傳到App的root component
         this.props.addFish(fish);
-        // const storeName = this.myInput.current.value;
-        // this.props.history.push(`/store/${storeName}`);
-        console.log(event.currentTarget); // <form...>
         event.currentTarget.reset();
     }
 
