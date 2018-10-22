@@ -2,22 +2,28 @@ import React from 'react';
 import { getFunName } from '../helpers';
 class StorePicker extends React.Component {
 
-    goToStore(event) {
-        // Stop form from sumbitting
+    myInput = React.createRef();
+
+    goToStore = event => {
         event.preventDefault();
-        // Get the text from input
-        console.log(this) // undefined 
-        // Change the page to /store/whatever-they-enter
-        this.componentDidMount() {
-            console.log(this) // StorePicker這個component
-        }
+        console.log(this.myInput);
+        console.log(this.myInput.current);
+        console.log(this.myInput.current.value);
+        const storeName = this.myInput.current.value;
+        this.props.history.push(`/store/${storeName}`);
     }
     render() {
         return (
             <React.Fragment>
-                <form className="store-selector" onSubnit={this.goToStore}>
+                <form className="store-selector" onSubmit={this.goToStore}>
                     <h2>Please Enter a Store</h2>
-                    <input type="text" required placeholder="Store Name" defaultValue={getFunName()}/>
+                    <input 
+                        type="text"
+                        required
+                        placeholder="Store Name"
+                        defaultValue={getFunName()}
+                        ref={this.myInput}
+                    />
                     <button type="submit" >Visit Store</button>
                 </form>
             </React.Fragment>
