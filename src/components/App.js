@@ -3,6 +3,8 @@ import Header from './Header';
 import Order from './Order';
 import Inventory from './Inventory';
 import Fish from './Fish'
+import sampleFishes from "../sample-fishes";
+
 class App extends React.Component {
     state = {
         fishes: {},
@@ -19,7 +21,7 @@ class App extends React.Component {
     }
 
     loadSampleFish = fish => {
-        alert('Sample Fish')
+        this.setState({ fishes: sampleFishes });
     }
 
     render(){
