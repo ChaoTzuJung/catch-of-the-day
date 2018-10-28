@@ -16,14 +16,29 @@ class App extends React.Component {
         const { params } = this.props.match;
         // ref 是 firebase 的 api
         // sync name of store
+        const localStorageRef = localStorage.getItem(params.storeid);
+        if(localStorageRef) {
+            //  當JSON是{ "fish1": 7 } ， key是字串
+            console.log('Restore it !!');
+            console.log(JSON.parse(localStorageRef));
+            this.setState({ order: JSON.parse(localStorageRef) })
+        }
         this.ref = base.syncState(`${params.storeid}/fishes`, {
             context: this,
             state: "fishes",
         });
     }
 
+    // 當改變order時，要把資料存在localStorage，並顯示在畫面世上
+    componentDidUpdate() {
+        console.log(this.state.order);
+        localStorage.setItem(
+            this.props.match.params.storeid,
+            JSON.stringify(this.state.order)
+        );
+    }
+
     componentWillUnmount() {
-        console.log('componentWillUnmount')
         base.removeBinding(this.ref);
     }
 
