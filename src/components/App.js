@@ -17,12 +17,14 @@ class App extends React.Component {
         // ref 是 firebase 的 api
         // sync name of store
         const localStorageRef = localStorage.getItem(params.storeid);
+        // localStorage是立即性的
         if(localStorageRef) {
             //  當JSON是{ "fish1": 7 } ， key是字串
             console.log('Restore it !!');
             console.log(JSON.parse(localStorageRef));
             this.setState({ order: JSON.parse(localStorageRef) })
         }
+        // syncState需要時間，所以當order要render秀出來時，你的fish state還是空的，還沒從firebase傳過來，所以解決辦法是在order.js的第五行做檢查，fish是否存在
         this.ref = base.syncState(`${params.storeid}/fishes`, {
             context: this,
             state: "fishes",

@@ -4,7 +4,8 @@ class Order extends React.Component {
     renderOrder = key => {
         const fish = this.props.fishes[key]; // 清單內有哪幾種魚
         const count = this.props.order[key]; // 清單每種魚的數量
-        const isAvailable = fish.status === 'available';
+        const isAvailable = fish && fish.status === 'available'; //當你用alan登入menu時，可以以存資料在firebase跟localStorage，但再次登入，出現status不存在，所以要確保fish的key存在
+        if(!fish) return null; // 多做這行確認是因為，當order沒fish要先給一個空的畫面，確認fish load玩才繼續顯示，若不給這行，會列出每個order都是sorry no fish，當firebase loading完fish，要會再度re-render畫面
         if(!isAvailable) {
             return (
                 <li key={key}>
