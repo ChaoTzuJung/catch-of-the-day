@@ -8,9 +8,7 @@ class AddFishform extends React.Component {
     imageRef = React.createRef();
 
     createFish = event => {
-        // 1. stop form from submit
         event.preventDefault();
-        // 2. 抓取你輸入的值並做成一個物件
         const fish = {
             name: this.nameRef.current.value,
             price: parseFloat(this.priceRef.current.value),
@@ -19,7 +17,6 @@ class AddFishform extends React.Component {
             image: this.imageRef.current.value,
         }
         console.log(this.props)
-        // 3. 呼叫callback addFish method，把fish物件傳到App的root component
         this.props.addFish(fish);
         event.currentTarget.reset();
     }

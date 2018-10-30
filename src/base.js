@@ -1,4 +1,4 @@
-import Rebase from 're-base'; //mirror out state to firebase change (react/firebase) 
+import Rebase from 're-base';
 import firebase from 'firebase';
 
 const firebaseApp = firebase.initializeApp({
@@ -9,8 +9,6 @@ const firebaseApp = firebase.initializeApp({
 
 const base = Rebase.createClass(firebaseApp.database());
 
-// This is a named export 
 export { firebaseApp };
 
-// The is default export 
 export default base;
