@@ -38,16 +38,40 @@ class App extends React.Component {
         base.removeBinding(this.ref);
     }
 
+    // CRUD 作法
+
     addFish = fish => {
         const fishes = {...this.state.fishes}
         fishes[`fish${Date.now()}`] = fish;
         this.setState({ fishes })
     }
 
+    updateFish = (key, updatedFish) => {
+        // 1. 複製fish state 
+        const fishes = { ...this.state.fishes };
+        // 2. 更新背修改的fish的state 
+        fishes[key] = updatedFish;
+        // 3. set that to state 
+        this.setState({ fishes });
+    }
+
+    // 不用filter去刪除
+    deleteFish = key => {
+        const fishes = { ...this.state.fishes };
+        fishes[key] = null;
+        this.setState({ fishes });
+    }
+
     addToOrder = key => {
         const order = {...this.state.order}
         order[key] = order[key] + 1 || 1;
         this.setState({ order })
+    }
+
+    removeFromOrder = key => {
+        const order = { ...this.state.order };
+        delete order[key];
+        this.setState({ order });
     }
 
     loadSampleFish = fish => {
@@ -70,8 +94,18 @@ class App extends React.Component {
                         )}
                     </ul>
                 </div>
-                <Order {...this.state} />
-                <Inventory addFish={this.addFish} loadSampleFish={this.loadSampleFish}/>
+                <Order 
+                    removeFromOrder={this.removeFromOrder}
+                    fishes={this.state.fishes}
+                    order={this.state.order}
+                />
+                <Inventory
+                    addFish={this.addFish}
+                    updateFish={this.updateFish}
+                    deleteFish={this.deleteFish}
+                    loadSampleFish={this.loadSampleFish}
+                    fishes={this.state.fishes}
+                />
             </div>
         )
     };
