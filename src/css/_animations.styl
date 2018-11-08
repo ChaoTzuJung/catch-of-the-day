@@ -6,13 +6,13 @@
 */
 
 .order-enter
-  transform: translateX(-120%)
+  transform: translateX(-120%) rotate(0) // list-order 起點
   transition 0.5s
   max-height: 0
   padding 0 !important
   &.order-enter-active
     max-height 60px
-    transform: translateX(0)
+    transform: translateX(0) rotate(1440deg)  // 按下add按鈕 list-order move到終點
     padding 2rem 0 !important
 
 .order-exit
@@ -40,4 +40,5 @@
   bottom 0
   &.count-exit-active
     background green
-    transform translateY(-100%) scale(3)
+    // transform translateY(-100%) scale(3)
+    transform translateY(-100%)

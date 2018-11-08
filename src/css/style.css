@@ -1,6 +1,6 @@
 .order-enter {
-  -webkit-transform: translateX(-120%);
-          transform: translateX(-120%);
+  -webkit-transform: translateX(-120%) rotate(0);
+          transform: translateX(-120%) rotate(0);
   -webkit-transition: 0.5s;
   transition: 0.5s;
   max-height: 0;
@@ -8,8 +8,8 @@
 }
 .order-enter.order-enter-active {
   max-height: 60px;
-  -webkit-transform: translateX(0);
-          transform: translateX(0);
+  -webkit-transform: translateX(0) rotate(1440deg);
+          transform: translateX(0) rotate(1440deg);
   padding: 2rem 0 !important;
 }
 .order-exit {
@@ -47,8 +47,8 @@
 }
 .count-exit.count-exit-active {
   background: #008000;
-  -webkit-transform: translateY(-100%) scale(3);
-          transform: translateY(-100%) scale(3);
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
 }
 @font-face {
   font-family: "haymakerregular";
@@ -89,7 +89,6 @@ audio:not([controls]) {
 [hidden] {
   display: none;
 }
-/* reset css */
 html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
@@ -260,7 +259,6 @@ h2 {
 h3 {
   font-size: 3rem;
 }
-/* Header.js */
 header.top {
   text-align: center;
 }
@@ -274,7 +272,6 @@ header.top h1 {
       -ms-flex-pack: center;
           justify-content: center;
 }
-/* 標題的魚鉤 */
 header.top h1 .ofThe {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -287,18 +284,15 @@ header.top h1 .ofThe {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: url("images/anchor.svg") center no-repeat; /* 魚鉤的SVG */
+  background: url("images/anchor.svg") center no-repeat;
   background-size: cover;
   padding: 0 1rem;
 }
-
-/*  黃色字的of小字 */
 header.top h1 .ofThe .of {
   padding-right: 2rem;
   position: relative;
   right: -0.5rem;
 }
-/* 黃色字的本身 */
 header.top h3 {
   margin: 0;
   font-size: 2rem;
@@ -313,7 +307,6 @@ header.top h3 span {
   padding-left: 1rem;
   padding-right: 1rem;
 }
-/* 黃色字的雙底線 */
 header.top h3:before,
 header.top h3:after {
   display: block;
@@ -330,7 +323,6 @@ header.top h3:after {
   top: auto;
   bottom: 7px;
 }
-/* App.js */
 .catch-of-the-day {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -643,7 +635,6 @@ button.twitter:after,
 input[type=submit].twitter:after {
   background: #2c8dd0;
 }
-/* StorePicker */
 .store-selector {
   background: #fff;
   max-width: 500px;
