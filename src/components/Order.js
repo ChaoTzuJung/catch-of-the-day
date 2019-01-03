@@ -1,15 +1,21 @@
 import React from 'react';
 import { formatPrice } from '../helpers';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
+
 class Order extends React.Component {
     renderOrder = key => {
         const fish = this.props.fishes[key];
         const count = this.props.order[key];
         const isAvailable = fish && fish.status === 'available';
+        const transitionOptions = {
+            classNames: "order",
+            key,
+            timeout: { enter: 500, exit: 500 }
+        }
         if(!fish) return null;
         if(!isAvailable) {
             return (
-                <CSSTransition classNames="order" key={key} timeout={{ enter: 500, exit: 500 }}>
+                <CSSTransition {...transitionOptions}>
                     <li key={key}>
                         Sorry {fish ? fish.name : 'fish'} is no longer available
                     </li>
