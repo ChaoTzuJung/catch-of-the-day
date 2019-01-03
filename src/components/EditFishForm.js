@@ -1,6 +1,20 @@
 import React from 'react';
+import PropsType from 'prop-types';
 // get this updated fish to swim upstream
 class EditFishform extends React.Component {
+
+    static propsType = {
+        fish: PropsType.shape({
+            image: PropsType.string,
+            name: PropsType.string,
+            price: PropsType.number,
+            desc: PropsType.string,
+            status: PropsType.string,
+        }),
+        index: PropsType.string,
+        deleteFish: PropsType.func,
+    }
+
     handleChange = event => {
         console.log(event.currentTarget.value) // input輸入的字
         console.log(event.currentTarget.name) // 在html tag裡面設定name屬性，當點到特定input可以顯示那個name屬性的字(我們可以知道什麼屬性的input有被更新)
